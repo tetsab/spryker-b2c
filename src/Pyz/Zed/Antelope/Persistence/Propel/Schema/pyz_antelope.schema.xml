@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          name="zed"
+          namespace="Orm\Zed\Antelope\Persistence"
+          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd">
+
+    <table name="pyz_antelope_location">
+        <column name="id_location" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="location_name" type="VARCHAR" size="120" required="true"/>
+    </table>
+
+    <table name="pyz_antelope">
+        <column name="id_antelope" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="VARCHAR" size="255" required="true"/>
+        <column name="color" type="VARCHAR" size="100"/>
+        <column name="fk_location" type="INTEGER"/>
+
+        <foreign-key foreignTable="pyz_antelope_location" onDelete="SET NULL">
+            <reference local="fk_location" foreign="id_location"/>
+        </foreign-key>
+    </table>
+</database>
